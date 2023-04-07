@@ -1,0 +1,15 @@
+{
+  "name": "juiceshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:run": "cypress open",
+    "cy:ex": "cypress run"
+  },
+  "author": "Julian Santamaria",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.9.0"
+  }
+}
