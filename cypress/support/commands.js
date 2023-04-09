@@ -46,12 +46,10 @@ Cypress.Commands.add("Checkout", () =>{
     cy.get('#checkoutButton').click({force:true})
 
 })
-Cypress.Commands.add("NewAdress", () =>{
-    cy.visit("https://juice-shop.herokuapp.com/#/adress/select")
+Cypress.Commands.add("NewAddress", () =>{
+    cy.visit("https://juice-shop.herokuapp.com/#/address/select")
     cy.get('h1.ng-star-inserted').should('contain.text','Select an address')
-    cy.get('button').eq(0).click({force:true})
-    //cy.url().should('contain','/adress/create')
-  
+    cy.get('button').eq(0).click({force:true})  
 })
 Cypress.Commands.add("CreateAddress", () =>{
     cy.visit("https://juice-shop.herokuapp.com/#/address/create")
@@ -64,11 +62,31 @@ Cypress.Commands.add("CreateAddress", () =>{
     cy.get('#mat-input-6').click({force:true}).type('Random City')
     cy.get('#mat-input-7').click({force:true}).type('Random State')
     cy.get('#submitButton > .mat-button-wrapper').click({force:true})
+    cy.get('button').eq(0).click({force:true})
+
+})
+Cypress.Commands.add("CreateAnotherAddress", () =>{
+    cy.visit("https://juice-shop.herokuapp.com/#/address/create")
+    cy.get('h1').should('contain.text','Add New Address')
+    cy.get('#mat-input-8').click({force:true}).type('Spain')
+    cy.get('#mat-input-9').click({force:true}).type('Adolfo')
+    cy.get('#mat-input-10').click({force:true}).type('634873223')
+    cy.get('#mat-input-11').click({force:true}).type('87965')
+    cy.get('#address').click({force:true}).type('Adress Random 9874')
+    cy.get('#mat-input-13').click({force:true}).type('Other Random City')
+    cy.get('#mat-input-14').click({force:true}).type('Other Random State')
+    cy.get('#submitButton > .mat-button-wrapper').click({force:true})
 })
 Cypress.Commands.add("SelectAddress", () =>{
     cy.visit("https://juice-shop.herokuapp.com/#/address/select")
-    cy.get('[type="radio"]').eq(0).check({force:true})
+    cy.get(':nth-child(2) > .cdk-column-Selection').click()
     cy.get('[type="radio"]').eq(1).check({force:true})
-    cy.get('[type="radio"]').eq(0).check({force:true})
-    cy.get('.mat-button-wrapper').eq(7).click({force:true})
+    cy.get('.btn-next').click({force:true})
+})
+Cypress.Commands.add("SelectShipping", () =>{
+    cy.visit("https://juice-shop.herokuapp.com/#/delivery-method")
+    cy.get(':nth-child(4) > h1').should('contain.text','Choose a delivery speed')
+    cy.get(':nth-child(2) > .cdk-column-Name').click()
+    //cy.get('#mat-radio-54 > .mat-radio-label > .mat-radio-container > .mat-radio-outer-circle').eq(0).check({force:true})
+    cy.get('button').eq(7).click({force:true})
 })

@@ -3,14 +3,16 @@ describe("Making a purchase on JuiceShop website from scratch", () =>{
         cy.visit("https://juice-shop.herokuapp.com/#/") 
         cy.get('.close-dialog').click()
         //Creating an account
-        cy.CreateAnAccount("random97@gmail.com","RandomPassword")
+        cy.CreateAnAccount("random131@gmail.com","RandomPassword")
     })
-    it("Successful login", ()=>{
-        cy.LoginAccount('random97@gmail.com','RandomPassword')
+    it("Making a purchase from scratch", ()=>{
+        cy.LoginAccount('random131@gmail.com','RandomPassword')
         cy.SelectProduct()
         cy.Checkout()
-        cy.NewAdress()
+        cy.NewAddress()
         cy.CreateAddress()
+        cy.CreateAnotherAddress()
         cy.SelectAddress()
+        cy.SelectShipping()
     })
 })
